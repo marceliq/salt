@@ -73,7 +73,7 @@ class SudoExecutor(ModuleExecutorBase):
                     '-c', salt.syspaths.CONFIG_DIR,
                     '--',
                     data.get('fun')]
-        if data['fun'] == 'state.sls':
+        if data['fun'].startswith('state'):
             kwargs['concurrent'] = True
         for arg in args:
             self.cmd.append(_cmd_quote(str(arg)))
